@@ -32,11 +32,12 @@ export default {
     movies () {
       return this.$store.state.topMovies
     }
-  }
+  },
 }
 </script>
 
 <style scoped lang="scss">
+<<<<<<< HEAD
 .title {
   margin-bottom: 20px;
 }
@@ -56,6 +57,7 @@ export default {
       height: 90%;
       display: block;
       object-fit: contain;
+      height: 100%;
       overflow: hidden;
     }
     &__descr {
