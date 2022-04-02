@@ -1,0 +1,78 @@
+<template>
+  <v-container>
+      <div v-for="movie in movies" :key="movie.id" class="card-movie">
+        <img class="card-movie__img" :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="poster">
+        <div class="card-movie__descr">
+          <div class="card-movie__descr-name">
+            <span>Name of movie: </span>
+            <span>{{ movie.original_title }}</span>
+          </div>
+          <div class="card-movie__descr-overview">
+            <span>Overview: </span>
+            <span>{{ movie.overview }}</span>
+          </div>
+        </div>
+        <v-btn @click="getDetailsOfMovie(movie.id)" rounded color="green">More</v-btn>
+    </div>
+  </v-container>
+</template>
+
+<script>
+
+export default {
+  name: 'MainView',
+  created () {
+    this.getTopMovies()
+  },
+  destroyed () {
+    this.$store.commit('destroyTopMovies')
+  },
+  computed: {
+    movies () {
+      return this.$store.state.topMovies
+    }
+  },
+  methods: {
+    getTopMovies () {
+      this.$store.dispatch('getTopMovies')
+    },
+    getDetailsOfMovie (id) {
+      this.$router.push(`/details/${id}`)
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+  .card-movie {
+    height: 350px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    background-color: #ECEFF1;
+    display: flex;
+    row-gap: 10px;
+    column-gap: 10px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
+    &__img {
+      border-radius: 10px;
+      height: 90%;
+      display: block;
+      object-fit: contain;
+      height: 100%;
+      overflow: hidden;
+    }
+    &__descr {
+      width: 50%;
+      color: ForestGreen;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      &-name {
+        color: LightSlateGrey;
+      }
+    }
+  }
+</style>

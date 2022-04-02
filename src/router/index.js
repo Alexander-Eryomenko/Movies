@@ -1,38 +1,38 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import DetailsAboutFilm from '@/views/DetailsAboutFilm.vue'
-import AboutView from '../views/AboutView.vue'
-import MainPage from '../views/MainPage.vue'
-import PageNotFound from '../views/PageNotFound.vue'
+import RaitingMoviesView from '@/views/RaitingMoviesView.vue'
+import DetailsAboutMovieView from '@/views/DetailsAboutMovieView.vue'
+import SomeMoviesView from '@/views/SomeMoviesView.vue'
+import MainView from '@/views/MainView.vue'
+import NotFoundView from '@/views/NotFoundView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'mainPage',
-    component: MainPage
+    name: 'mainView',
+    component: MainView
   },
   {
-    path: '/raiting-films',
-    name: 'raitingPage',
-    component: HomeView
+    path: '/raiting-movies',
+    name: 'raitingMoviesView',
+    component: RaitingMoviesView
   },
   {
-    path: '/some-films',
-    name: 'someFilms',
-    component: AboutView
+    path: '/some-movies',
+    name: 'someMoviesView',
+    component: SomeMoviesView
   },
   {
-    path: '/detailsAboutFilm/:id',
-    name: 'detailsAboutFilm',
-    component: DetailsAboutFilm
+    path: '/details/:id',
+    name: 'detailsAboutMovie',
+    component: DetailsAboutMovieView
   },
   {
     path: '*',
-    name: 'pageNotFound',
-    component: PageNotFound
+    name: 'notFoundView',
+    component: NotFoundView
   }
 ]
 

@@ -1,50 +1,43 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { ApiMovies } from '@/api/apiMovie'
+import { MoviesApi } from '@/api/moviesApi'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     isLoading: false,
-    topFilms: [],
-    detailsOfTopFilm: {}
-  },
-  getters: {
+    topMovies: [],
+    detailsOfTopMovie: {}
   },
   mutations: {
-    isLoadingStatus (state) {
+    setLoadingState (state) {
       state.isLoading = !state.isLoading
     },
-    destroyTopFilms (state) {
-      state.topFilms = []
+    destroyTopMovies (state) {
+      state.topMovies = []
     },
-    loadTopFilms (state, payload) {
-      state.topFilms = payload.data
+    setTopMovies (state, payload) {
+      state.topMovies = payload
     },
-    loadDetailsOfTopFilms (state, payload) {
-      console.log(payload)
-      state.detailsOfTopFilm = payload.data
+    setDetailsOfTopMovie (state, payload) {
+      state.detailsOfTopFilm = payload
     }
   },
   actions: {
-    getBestFilms ({ commit }) {
-      ApiMovies.getTopMovies()
+    getTopMovies ({ commit }) {
+      MoviesApi.getTopMovies()
         .then(data => {
-          commit('loadTopFilms', { data })
+          commit('setTopMovies', data)
         })
         .catch(err => console.log(err))
-        .finally(() => console.log('Finally getBestFilms'))
     },
-    getDatailsOfTopFilm ({ commit }, id) {
-      ApiMovies.getDetailsOfMovie(id)
+    getDatailsOfTopMovie ({ commit }, id) {
+      MoviesApi.getDetailsOfMovie(id)
         .then(data => {
-          commit('loadDetailsOfTopFilms', { data })
+          commit('setDetailsOfTopMovie', data)
         })
         .catch(err => console.log(err))
-        .finally(() => console.log('Finally getDetailsOfBestFilms'))
     }
-  },
-  modules: {
   }
 })

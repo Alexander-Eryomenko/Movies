@@ -1,21 +1,22 @@
 <template>
   <v-container class="d-flex justify-center mt-4">
-    <div>Page not found: https://movie<span>{{ getQuery }}</span></div>
+    <div class="text">{{ getInfoAboutUrl }}</div>
   </v-container>
 </template>
+
 <script>
 export default {
   name: 'PageNotFound',
   computed: {
-    getQuery () {
-      const query = this.$route.path
-      return query
+    getInfoAboutUrl () {
+      return `Page not found: https://movie${this.$route.path}`
     }
   }
 }
 </script>
+
 <style lang="scss" scoped>
-  span {
+  .text {
     color: orange;
   }
 </style>
