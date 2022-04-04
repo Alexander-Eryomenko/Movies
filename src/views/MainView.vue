@@ -1,5 +1,6 @@
 <template>
   <v-container>
+    <div class="title text-center text-h4 font-weight-bold green--text text--darken-3">Top movies</div>
       <div v-for="movie in movies" :key="movie.id" class="card-movie">
         <img class="card-movie__img" :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="poster">
         <div class="card-movie__descr">
@@ -12,7 +13,7 @@
             <span>{{ movie.overview }}</span>
           </div>
         </div>
-        <v-btn @click="getDetailsOfMovie(movie.id)" rounded color="green">More</v-btn>
+          <v-btn :to="{ name: 'detailsAboutMovie', params: { id: movie.id }}" rounded color="green">More</v-btn>
     </div>
   </v-container>
 </template>
@@ -22,7 +23,7 @@
 export default {
   name: 'MainView',
   created () {
-    this.getTopMovies()
+    this.$store.dispatch('getTopMovies')
   },
   destroyed () {
     this.$store.commit('destroyTopMovies')
@@ -31,19 +32,14 @@ export default {
     movies () {
       return this.$store.state.topMovies
     }
-  },
-  methods: {
-    getTopMovies () {
-      this.$store.dispatch('getTopMovies')
-    },
-    getDetailsOfMovie (id) {
-      this.$router.push(`/details/${id}`)
-    }
   }
 }
 </script>
 
 <style scoped lang="scss">
+.title {
+  margin-bottom: 20px;
+}
   .card-movie {
     height: 350px;
     padding: 10px 15px;
@@ -60,7 +56,6 @@ export default {
       height: 90%;
       display: block;
       object-fit: contain;
-      height: 100%;
       overflow: hidden;
     }
     &__descr {

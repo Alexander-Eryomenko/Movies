@@ -2,7 +2,7 @@
   <div class="wrapper-header">
       <div class="header">
         <router-link class="header__logo" to="/">
-          <img src="@/assets/logo.svg" alt="logo">
+          <img class="header__logo-img" src="@/assets/logo.svg" alt="logo">
         </router-link>
       <div class="header__nav">
         <v-btn to="/raiting-movies" x-small class="header__nav__btn">Raiting films</v-btn>
@@ -31,7 +31,7 @@ export default {
     &__logo {
       height: 50%;
       width: 100px;
-      img {
+      &-img {
         width: 100%;
         height: 100%;
         object-fit: contain;

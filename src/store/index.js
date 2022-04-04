@@ -10,6 +10,13 @@ export default new Vuex.Store({
     topMovies: [],
     detailsOfTopMovie: {}
   },
+  getters: {
+    getMovieById (state) {
+      return function (id) {
+        return state.topMovies.find(item => item.id === id)
+      }
+    }
+  },
   mutations: {
     setLoadingState (state) {
       state.isLoading = !state.isLoading

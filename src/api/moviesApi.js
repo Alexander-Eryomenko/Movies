@@ -10,6 +10,6 @@ export class MoviesApi {
   }
 
   static getDetailsOfMovie (id) {
-    axios.get(`${MoviesApi.urlDetailsMovie}${id}?api_key=${MoviesApi.apiKey}`).then(response => response.data)
+    return axios.get(`${MoviesApi.urlDetailsMovie}${id}?api_key=${MoviesApi.apiKey}`).then(response => response.data)
   }
 }

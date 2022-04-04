@@ -27,7 +27,8 @@ const routes = [
   {
     path: '/details/:id',
     name: 'detailsAboutMovie',
-    component: DetailsAboutMovieView
+    component: DetailsAboutMovieView,
+    props: true
   },
   {
     path: '*',
@@ -39,7 +40,15 @@ const routes = [
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash,
+        behavior: 'smooth'
+      }
+    }
+  }
 })
 
 export default router

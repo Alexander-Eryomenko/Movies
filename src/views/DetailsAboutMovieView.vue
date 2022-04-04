@@ -3,33 +3,33 @@
     <div class="title">
       About film
     </div>
-    <div class="descr">
+    <div v-if="dataAboutMovie" class="descr">
       <div>
-        <span>Budget:</span>
+        <span>Budget: </span>
         <span>{{ dataAboutMovie.budget }}</span>
       </div>
       <div>
-        <sapn>Home page:</sapn>
-        <sapn>{{ dataAboutMovie.homepage }}</sapn>
+        <span>Home page: </span>
+        <span>{{ dataAboutMovie.homepage }}</span>
       </div>
       <div>
-        <span>Release date:</span>
+        <span>Release date: </span>
         <span>{{ dataAboutMovie.release_date }}</span>
       </div>
       <div>
-        <span>Revenue:</span>
+        <span>Revenue: </span>
         <span>{{ dataAboutMovie.revenue }}</span>
       </div>
       <div>
-        <span>Runtime:</span>
+        <span>Runtime: </span>
         <span>{{ dataAboutMovie.runtime }}</span>
       </div>
       <div>
-        <span>Status:</span>
+        <span>Status: </span>
         <span>{{ dataAboutMovie.status }}</span>
       </div>
       <div>
-        <span>Tagline:</span>
+        <span>Tagline: </span>
         <span>{{ dataAboutMovie.tagline }}</span>
       </div>
     </div>
@@ -39,12 +39,18 @@
 <script>
 export default {
   name: 'DetailsAboutMovie',
+  props: {
+    id: {
+      type: Number,
+      require: true
+    }
+  },
   created () {
-    this.$store.dispatch('getDatailsOfTopMovie', this.$route.params.id)
+    this.$store.dispatch('getDatailsOfTopMovie', this.id)
   },
   computed: {
     dataAboutMovie () {
-      return this.$store.state.detailsOfTopMovie || 'No descr'
+      return this.$store.state.detailsOfTopMovie
     }
   }
 }
