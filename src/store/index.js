@@ -28,7 +28,7 @@ export default new Vuex.Store({
       state.topMovies = payload
     },
     setDetailsOfTopMovie (state, payload) {
-      state.detailsOfTopFilm = payload
+      state.detailsOfTopMovie = payload
     }
   },
   actions: {

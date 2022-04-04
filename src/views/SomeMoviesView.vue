@@ -4,7 +4,6 @@
   </div>
 </template>
 <script>
-// import { ApiMovies } from '../api/apiMovie'
 
 export default {
   name: 'AboutView'

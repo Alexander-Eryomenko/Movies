@@ -6,11 +6,11 @@
     <div v-if="dataAboutMovie" class="descr">
       <div>
         <span>Budget: </span>
-        <span>{{ dataAboutMovie.budget }}</span>
+        <span>{{ dataAboutMovie.budget }} $</span>
       </div>
       <div>
         <span>Home page: </span>
-        <span>{{ dataAboutMovie.homepage }}</span>
+        <a class="link" target="_blank" :href="dataAboutMovie.homepage">{{dataAboutMovie.original_title}}</a>
       </div>
       <div>
         <span>Release date: </span>
@@ -18,11 +18,11 @@
       </div>
       <div>
         <span>Revenue: </span>
-        <span>{{ dataAboutMovie.revenue }}</span>
+        <span>{{ dataAboutMovie.revenue }} $</span>
       </div>
       <div>
         <span>Runtime: </span>
-        <span>{{ dataAboutMovie.runtime }}</span>
+        <span>{{ dataAboutMovie.runtime }} minutes</span>
       </div>
       <div>
         <span>Status: </span>
@@ -66,5 +66,8 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  }
+  .link {
+    text-decoration: none;
   }
 </style>
