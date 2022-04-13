@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import RaitingMoviesView from '@/views/RaitingMoviesView.vue'
+import NowPlayingView from '@/views/NowPlayingView.vue'
+import PopularMovieView from '@/views/PopularMovieView.vue'
 import DetailsAboutMovieView from '@/views/DetailsAboutMovieView.vue'
-import SomeMoviesView from '@/views/SomeMoviesView.vue'
-import MainView from '@/views/MainView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 
 Vue.use(VueRouter)
@@ -11,18 +10,13 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'mainView',
-    component: MainView
+    name: 'nowPlayingMovies',
+    component: NowPlayingView
   },
   {
-    path: '/raiting-movies',
-    name: 'raitingMoviesView',
-    component: RaitingMoviesView
-  },
-  {
-    path: '/some-movies',
-    name: 'someMoviesView',
-    component: SomeMoviesView
+    path: '/popular',
+    name: 'popularMovieView',
+    component: PopularMovieView
   },
   {
     path: '/details/:id',

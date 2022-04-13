@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import { TITLE } from '@/constants/titleConstants'
 export default {
   name: 'DetailsAboutMovie',
   props: {
@@ -50,8 +51,11 @@ export default {
   },
   computed: {
     dataAboutMovie () {
-      return this.$store.state.detailsOfTopMovie
+      return this.$store.state.detailsOfMovie
     }
+  },
+  destroyed () {
+    this.$store.commit('destroyMoviesData', TITLE.detailsAboutMovie)
   }
 }
 </script>
