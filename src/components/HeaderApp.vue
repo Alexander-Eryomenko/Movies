@@ -5,7 +5,7 @@
           <img class="header__logo-img" src="@/assets/logo.svg" alt="logo">
         </router-link>
       <div class="header__nav">
-        <v-btn to="/raiting-movies" x-small class="header__nav__btn">Raiting films</v-btn>
+        <v-btn to="/popular" x-small class="header__nav__btn">Popular Movies</v-btn>
         <v-btn to="/some-movies" x-small class="header__nav__btn">Some films</v-btn>
       </div>
     </div>
