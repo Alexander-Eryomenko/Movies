@@ -1,15 +1,20 @@
 <template>
-  <CardMovie :title="titleForMoviePage" :movies="popularMovies" />
+  <div>
+    <CardMovie :title="titleForMoviePage" :movies="popularMovies" />
+    <Pagination />
+  </div>
 </template>
 
 <script>
 import CardMovie from '@/components/CardMovie.vue'
+import Pagination from '@/components/AppPagination.vue'
 import { TITLE } from '@/constants/titleConstants'
 
 export default {
   name: 'NowPlayingView',
   components: {
-    CardMovie
+    CardMovie,
+    Pagination
   },
   created () {
     this.$store.dispatch('getNowPlayingMovies')

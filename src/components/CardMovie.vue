@@ -47,9 +47,16 @@ export default {
     display: flex;
     row-gap: 10px;
     column-gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.3s linear;
+    -webkit-box-shadow: 0px 4px 11px 1px rgba(0, 0, 0, 0.2);
+      -moz-box-shadow: 0px 4px 11px 1px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 4px 11px 1px rgba(0, 0, 0, 0.2);
+      &:hover {
+      transform: scale(1.01);
+    }
     &__img {
       border-radius: 10px;
       height: 90%;

@@ -22,4 +22,8 @@ export class MoviesApi {
   static getDetailsOfMovie (id) {
     return axios.get(`${MoviesApi.mainURL}/${id}?api_key=${MoviesApi.apiKey}`).then(response => response.data)
   }
+
+  static getVideoOfMovie (id) {
+    return axios.get(`${MoviesApi.mainURL}/${id}/videos?api_key=${MoviesApi.apiKey}`).then(response => response.data.results)
+  }
 }

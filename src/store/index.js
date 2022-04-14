@@ -11,7 +11,8 @@ export default new Vuex.Store({
     popularMovies: [],
     nowPlayingMovies: [],
     latestMovie: {},
-    detailsOfMovie: {}
+    detailsOfMovie: {},
+    videoOfMovie: {}
   },
   mutations: {
     setLoadingStatus (state) {
@@ -44,6 +45,9 @@ export default new Vuex.Store({
     },
     setDetailsOfMovie (state, payload) {
       state.detailsOfMovie = payload
+    },
+    setVideoOfMovie (state, payload) {
+      state.videoOfMovie = payload
     }
   },
   actions: {
@@ -72,6 +76,13 @@ export default new Vuex.Store({
       MoviesApi.getDetailsOfMovie(id)
         .then(data => {
           commit('setDetailsOfMovie', data)
+        })
+        .catch(err => console.log(err))
+    },
+    getVideoOfMovie ({ commit }, id) {
+      MoviesApi.getVideoOfMovie(id)
+        .then(data => {
+          commit('setVideoOfMovie', data)
         })
         .catch(err => console.log(err))
     }
