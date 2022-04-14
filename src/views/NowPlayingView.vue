@@ -7,12 +7,14 @@
 
 <script>
 import MoviesList from '@/components/MoviesList.vue'
+import Pagination from '@/components/AppPagination.vue'
 import { TITLE } from '@/constants/titleConstants'
 
 export default {
   name: 'NowPlayingView',
   components: {
-    MoviesList
+    MoviesList,
+    Pagination
   },
   created () {
     this.$store.dispatch('getNowPlayingMovies')

@@ -3,7 +3,9 @@
     <div class="title">
       About film
     </div>
+
     <div v-if="dataAboutMovie" class="descr">
+      <img class="descr__img" :src="'https://image.tmdb.org/t/p/w500' + dataAboutMovie.backdrop_path" alt="moviePicture">
       <div>
         <span>Budget: </span>
         <span>{{ dataAboutMovie.budget }} $</span>
@@ -37,7 +39,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'DetailsAboutMovie',
   props: {
@@ -73,6 +74,14 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 20px;
+      &__img {
+        display: block;
+        width: 50%;
+        height: 50%;
+        border-radius: 20px;
+        margin-bottom: 15px;
+      }
   }
   .link {
     text-decoration: none;
