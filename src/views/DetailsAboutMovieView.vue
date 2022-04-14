@@ -6,6 +6,8 @@
       </span>
     </div>
     <div v-if="dataAboutMovie" class="descr">
+      <img class="descr__img" :src="'https://image.tmdb.org/t/p/w500' + dataAboutMovie.backdrop_path" alt="moviePicture">
+      <div>
       <img v-if="dataAboutMovie.backdrop_path" class="descr__img" :src="'https://image.tmdb.org/t/p/w500' + dataAboutMovie.backdrop_path" alt="moviePicture">
       <div v-if="dataAboutMovie.budget">
         <span>Budget: </span>

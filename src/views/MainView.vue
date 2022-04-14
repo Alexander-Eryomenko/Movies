@@ -23,7 +23,7 @@ export default {
   destroyed () {
     this.$store.commit('destroyMoviesData', {
       propState: 'nowPlayingMovies',
-      reset: null
+      reset: []
     })
   },
   computed: {
