@@ -9,12 +9,19 @@
         <v-btn to="/some-movies" x-small class="header__nav__btn">Some films</v-btn>
       </div>
     </div>
-    </div>
+    <BurgerMenu />
+  </div>
 </template>
 
 <script>
+import BurgerMenu from '@/components/BurgerMenu.vue'
+
 export default {
-  name: 'HeaderApp'
+  name: 'HeaderApp',
+  components: {
+    BurgerMenu
+  }
+
 }
 </script>
 <style lang="scss" scoped>
@@ -22,6 +29,7 @@ export default {
   background-color: green;
   width: 100%;
   min-height: 100px;
+  position: relative;
 }
 .header {
   height: 100%;
@@ -41,5 +49,10 @@ export default {
       display: flex;
       column-gap: 10px;
     }
+  @media (min-width: 300px) and (max-width: 960px) {
+    .header__nav {
+      display: none;
+    }
+}
 }
 </style>
