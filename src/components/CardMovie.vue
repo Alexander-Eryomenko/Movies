@@ -16,7 +16,6 @@
         <v-btn :to="{ name: 'detailsAboutMovie', params: { id: movie.id }}" rounded color="green">More</v-btn>
     </div>
   </v-container>
-
 </template>
 
 <script>
@@ -36,9 +35,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.title {
-  margin-bottom: 20px;
-}
+  .title {
+    margin-bottom: 20px;
+  }
   .card-movie {
     height: 350px;
     padding: 10px 15px;
@@ -52,28 +51,28 @@ export default {
     align-items: center;
     transition: all 0.3s linear;
     -webkit-box-shadow: 0px 4px 11px 1px rgba(0, 0, 0, 0.2);
-      -moz-box-shadow: 0px 4px 11px 1px rgba(0, 0, 0, 0.2);
-      box-shadow: 0px 4px 11px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 4px 11px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 11px 1px rgba(0, 0, 0, 0.2);
       &:hover {
       transform: scale(1.01);
-    }
-    &__img {
-      border-radius: 10px;
-      height: 90%;
-      display: block;
-      object-fit: contain;
-      overflow: hidden;
-    }
-    &__descr {
-      width: 50%;
-      color: ForestGreen;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      row-gap: 10px;
-      &-name {
-        color: LightSlateGrey;
       }
-    }
+      &__img {
+        border-radius: 10px;
+        height: 90%;
+        display: block;
+        object-fit: contain;
+        overflow: hidden;
+      }
+      &__descr {
+        width: 50%;
+        color: ForestGreen;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        &-name {
+          color: LightSlateGrey;
+        }
+      }
   }
 </style>
