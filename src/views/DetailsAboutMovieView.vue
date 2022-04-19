@@ -3,7 +3,6 @@
     <div class="title">
       About film
     </div>
-
     <div v-if="dataAboutMovie" class="descr">
       <img class="descr__img" :src="'https://image.tmdb.org/t/p/w500' + dataAboutMovie.backdrop_path" alt="moviePicture">
       <div>
@@ -40,6 +39,7 @@
 </template>
 
 <script>
+
 import VideoPlayer from '@/components/VideoPlayer.vue'
 import { TITLE } from '@/constants/titleConstants'
 export default {
