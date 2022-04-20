@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <div class="title">
-      About film
+      <span>{{ dataAboutMovie.original_title }}</span>
     </div>
     <div v-if="dataAboutMovie" class="descr">
       <img class="descr__img" :src="'https://image.tmdb.org/t/p/w500' + dataAboutMovie.backdrop_path" alt="moviePicture">
@@ -54,7 +54,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('getDatailsOfTopMovie', this.id)
+    this.$store.dispatch('getDatailsOfMovie', this.id)
     this.$store.dispatch('getVideoOfMovie', this.id)
   },
   computed: {

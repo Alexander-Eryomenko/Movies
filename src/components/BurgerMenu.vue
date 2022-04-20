@@ -6,7 +6,7 @@
     </div>
     <div :class="{'aside-show-menu': toogleMenu}" class="aside-menu">
         <div class="btn-container">
-          <v-btn to="/" x-small class="header__nav__btn">Main page</v-btn>
+          <v-btn to="/" x-small class="header__nav__btn">Now Playing Movies</v-btn>
           <v-btn to="/popular" x-small class="header__nav__btn">Popular Movies</v-btn>
           <v-btn to="/some-movies" x-small class="header__nav__btn">Some films</v-btn>
         </div>
@@ -32,6 +32,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/variables/variables.scss";
+
   .burger-menu-btn {
   display: none;
   span {
@@ -64,7 +66,7 @@ export default {
 .aside-menu {
   width: 250px;
   position: absolute;
-  background-color: yellow;
+  background-color: $greenColor;
   height: 100vh;
   top: 0;
   left: 0;

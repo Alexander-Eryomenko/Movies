@@ -13,7 +13,7 @@
           <span>{{ movie.overview }}</span>
         </div>
       </div>
-        <v-btn :to="{ name: 'detailsAboutMovie', params: { id: movie.id }}" rounded color="green">More</v-btn>
+        <v-btn class="card-movie__btn" :to="{ name: 'detailsAboutMovie', params: { id: movie.id }}" rounded>More</v-btn>
     </div>
   </v-container>
 </template>
@@ -35,6 +35,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../assets/variables/variables.scss";
+
   .title {
     margin-bottom: 20px;
   }
@@ -65,14 +67,18 @@ export default {
       }
       &__descr {
         width: 50%;
-        color: ForestGreen;
+        color: $greenColor;
         text-align: center;
         display: flex;
         flex-direction: column;
         row-gap: 10px;
         &-name {
-          color: LightSlateGrey;
+          color: $greyColor;
         }
+      }
+      &__btn {
+        background-color: $greenColor !important;
+        color: #fff;
       }
   }
 </style>
