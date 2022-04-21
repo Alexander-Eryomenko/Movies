@@ -56,6 +56,7 @@ export default {
       height: 90%;
       display: block;
       object-fit: contain;
+      height: 100%;
       overflow: hidden;
     }
     &__descr {
