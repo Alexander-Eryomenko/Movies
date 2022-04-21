@@ -32,12 +32,11 @@ export default {
     movies () {
       return this.$store.state.topMovies
     }
-  },
+  }
 }
 </script>
 
 <style scoped lang="scss">
-<<<<<<< HEAD
 .title {
   margin-bottom: 20px;
 }
