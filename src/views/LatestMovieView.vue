@@ -1,16 +1,14 @@
 <template>
-  <MoviesList :movies="latestMovie"/>
+  <div>
+    <div class="title text-center text-h4 font-weight-bold green--text text--darken-3">{{titleForMoviePage}}</div>
+  </div>
 </template>
 
 <script>
-import MoviesList from '@/components/MoviesList.vue'
 import { TITLE } from '@/constants/titleConstants'
 
 export default {
   name: 'LatestMovieView',
-  components: {
-    MoviesList
-  },
   created () {
     this.$store.dispatch('getLatestMovie')
   },

@@ -1,9 +1,10 @@
 <template>
   <v-container>
     <div class="title">
-      About film
+      <span>
+        {{ dataAboutMovie.original_title }}
+      </span>
     </div>
-
     <div v-if="dataAboutMovie" class="descr">
       <img class="descr__img" :src="'https://image.tmdb.org/t/p/w500' + dataAboutMovie.backdrop_path" alt="moviePicture">
       <div>
@@ -12,7 +13,7 @@
       </div>
       <div>
         <span>Home page: </span>
-        <a class="link" target="_blank" :href="dataAboutMovie.homepage">{{dataAboutMovie.original_title}}</a>
+        <a class="descr__link" target="_blank" :href="dataAboutMovie.homepage">{{dataAboutMovie.original_title}}</a>
       </div>
       <div>
         <span>Release date: </span>
@@ -82,8 +83,8 @@ export default {
         border-radius: 20px;
         margin-bottom: 15px;
       }
-  }
-  .link {
-    text-decoration: none;
+    &__link {
+      text-decoration: none;
+    }
   }
 </style>
