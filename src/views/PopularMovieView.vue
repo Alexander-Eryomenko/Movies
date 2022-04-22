@@ -1,21 +1,27 @@
 <template>
-  <CardMovie :title="titleForMoviePage" :movies="popularMovies" />
+  <div>
+    <div class="title text-center text-h4 font-weight-bold green--text text--darken-3">{{titleForMoviePage}}</div>
+    <MoviesList :movies="popularMovies" />
+  </div>
 </template>
 
 <script>
-import CardMovie from '@/components/CardMovie.vue'
+import MoviesList from '@/components/MoviesList.vue'
 import { TITLE } from '@/constants/titleConstants'
 
 export default {
   name: 'PopularMovieView',
   components: {
-    CardMovie
+    MoviesList
   },
   created () {
     this.$store.dispatch('getPopularMovies')
   },
   destroyed () {
-    this.$store.commit('destroyMoviesData', TITLE.popularMovies)
+    this.$store.commit('destroyMoviesData', {
+      propState: 'popularMovies',
+      reset: []
+    })
   },
   computed: {
     popularMovies () {

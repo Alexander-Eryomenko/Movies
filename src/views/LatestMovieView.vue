@@ -1,21 +1,24 @@
 <template>
-  <CardMovie :title="titleForMoviePage" :movies="latestMovie"/>
+  <MoviesList :movies="latestMovie"/>
 </template>
 
 <script>
-import CardMovie from '@/components/CardMovie.vue'
+import MoviesList from '@/components/MoviesList.vue'
 import { TITLE } from '@/constants/titleConstants'
 
 export default {
   name: 'LatestMovieView',
   components: {
-    CardMovie
+    MoviesList
   },
   created () {
     this.$store.dispatch('getLatestMovie')
   },
   destroyed () {
-    this.$store.commit('destroyMoviesData', TITLE.latestMovie)
+    this.$store.commit('destroyMoviesData', {
+      propState: 'latestMovie',
+      reset: {}
+    })
   },
   computed: {
     latestMovie () {

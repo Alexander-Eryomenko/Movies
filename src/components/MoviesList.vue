@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'CardMovie',
+  name: 'MoviesList',
   props: {
     movies: {
       type: Array,
@@ -31,9 +31,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .title {
-    margin-bottom: 20px;
-  }
   .card-movie {
     height: 350px;
     padding: 10px 15px;

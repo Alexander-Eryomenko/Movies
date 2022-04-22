@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { TITLE } from '@/constants/titleConstants'
+
 export default {
   name: 'DetailsAboutMovie',
   props: {
@@ -55,7 +55,10 @@ export default {
     }
   },
   destroyed () {
-    this.$store.commit('destroyMoviesData', TITLE.detailsAboutMovie)
+    this.$store.commit('destroyMoviesData', {
+      propState: 'detailsOfMovie',
+      reset: {}
+    })
   }
 }
 </script>
