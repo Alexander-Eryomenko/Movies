@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { TITLE } from '@/constants/titleConstants'
 import { MoviesApi } from '@/api/moviesApi'
 
 Vue.use(Vuex)
@@ -17,21 +16,8 @@ export default new Vuex.Store({
     setLoadingStatus (state) {
       state.isLoading = !state.isLoading
     },
-    destroyMoviesData (state, payload) {
-      switch (payload) {
-        case TITLE.popularMovies:
-          state.popularMovies = []
-          break
-        case TITLE.nowPlayingMovies:
-          state.nowPlayingMovies = []
-          break
-        case TITLE.latestMovie:
-          state.latestMovie = {}
-          break
-        case TITLE.detailsAboutMovie:
-          state.detailsOfMovie = {}
-          break
-      }
+    destroyMoviesData (state, { propState, reset }) {
+      state[propState] = reset
     },
     setPopularMovies (state, payload) {
       state.popularMovies = payload
