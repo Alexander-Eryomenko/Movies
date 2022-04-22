@@ -7,35 +7,57 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isLoading: false,
-    topMovies: [],
-    detailsOfTopMovie: {}
+    popularMovies: [],
+    nowPlayingMovies: [],
+    latestMovie: {},
+    detailsOfMovie: {}
   },
   mutations: {
-    setLoadingState (state) {
+    setLoadingStatus (state) {
       state.isLoading = !state.isLoading
     },
-    destroyTopMovies (state) {
-      state.topMovies = []
+    destroyMoviesData (state, { propState, reset }) {
+      state[propState] = reset
     },
-    setTopMovies (state, payload) {
-      state.topMovies = payload
+    setPopularMovies (state, payload) {
+      state.popularMovies = payload
     },
-    setDetailsOfTopMovie (state, payload) {
-      state.detailsOfTopMovie = payload
+    setNowPlayingMovies (state, payload) {
+      state.nowPlayingMovies = payload
+    },
+    setLatestMovies (state, payload) {
+      state.latestMovie = payload
+    },
+    setDetailsOfMovie (state, payload) {
+      state.detailsOfMovie = payload
     }
   },
   actions: {
-    getTopMovies ({ commit }) {
-      MoviesApi.getTopMovies()
+    getPopularMovies ({ commit }) {
+      MoviesApi.getPopularMovies()
         .then(data => {
-          commit('setTopMovies', data)
+          commit('setPopularMovies', data)
+        })
+        .catch(err => console.log(err))
+    },
+    getNowPlayingMovies ({ commit }) {
+      MoviesApi.getNowPlayingMovie()
+        .then(data => {
+          commit('setNowPlayingMovies', data)
+        })
+        .catch(err => console.log(err))
+    },
+    getLatestMovie ({ commit }) {
+      MoviesApi.getLatestMovie()
+        .then(data => {
+          commit('setLatestMovies', data)
         })
         .catch(err => console.log(err))
     },
     getDatailsOfTopMovie ({ commit }, id) {
       MoviesApi.getDetailsOfMovie(id)
         .then(data => {
-          commit('setDetailsOfTopMovie', data)
+          commit('setDetailsOfMovie', data)
         })
         .catch(err => console.log(err))
     }
