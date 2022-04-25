@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="latest-movie">
     <div class="title text-center text-h4 font-weight-bold green--text text--darken-3">{{titleForMoviePage}}</div>
   </div>
 </template>

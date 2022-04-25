@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="main-page">
     <div class="title text-center text-h4 font-weight-bold green--text text--darken-3">{{titleForMoviePage}}</div>
-    <MoviesList :movies="popularMovies" />
-    <Pagination />
+    <MoviesList :movies="nowPlayingMovies" />
+    <Pagination actionType="getNowPlayingMovies" />
   </div>
 </template>
 
@@ -12,7 +12,7 @@ import Pagination from '@/components/AppPagination.vue'
 import { TITLE } from '@/constants/titleConstants'
 
 export default {
-  name: 'NowPlayingView',
+  name: 'MainView',
   components: {
     MoviesList,
     Pagination
@@ -27,7 +27,7 @@ export default {
     })
   },
   computed: {
-    popularMovies () {
+    nowPlayingMovies () {
       return this.$store.state.nowPlayingMovies
     },
     titleForMoviePage () {

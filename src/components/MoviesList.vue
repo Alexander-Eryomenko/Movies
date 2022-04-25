@@ -42,6 +42,7 @@ export default {
     margin-bottom: 10px;
     justify-content: space-between;
     align-items: center;
+    overflow: auto;
       &__img {
         border-radius: 10px;
         height: 90%;
@@ -60,5 +61,18 @@ export default {
             color: LightSlateGrey;
           }
       }
+  }
+  @media (min-width: 300px) and (max-width: 960px) {
+    .card-movie {
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      &__img {
+        height: 150px;
+      }
+      &__descr {
+        font-size: 12px;
+      }
+    }
   }
 </style>

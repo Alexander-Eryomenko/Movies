@@ -10,7 +10,11 @@ export default new Vuex.Store({
     popularMovies: [],
     nowPlayingMovies: [],
     latestMovie: {},
-    detailsOfMovie: {}
+    detailsOfMovie: {},
+    configurationsForImages: {},
+    currentPage: null,
+    totalPages: null,
+    totalResults: null
   },
   mutations: {
     setLoadingStatus (state) {
@@ -19,31 +23,53 @@ export default new Vuex.Store({
     destroyMoviesData (state, { propState, reset }) {
       state[propState] = reset
     },
-    setPopularMovies (state, payload) {
-      state.popularMovies = payload
+    setPopularMovies (state, { data, currentPage, totalPages, totalResults }) {
+      state.popularMovies = data
+      state.currentPage = currentPage
+      state.totalPages = totalPages
+      state.totalResults = totalResults
     },
-    setNowPlayingMovies (state, payload) {
-      state.nowPlayingMovies = payload
+    setNowPlayingMovies (state, { data, currentPage, totalPages, totalResults }) {
+      state.nowPlayingMovies = data
+      state.currentPage = currentPage
+      state.totalPages = totalPages
+      state.totalResults = totalResults
     },
     setLatestMovies (state, payload) {
       state.latestMovie = payload
     },
     setDetailsOfMovie (state, payload) {
       state.detailsOfMovie = payload
+    },
+    setConfigurationsForImages (state, payload) {
+      state.configurationsForImages = payload
+    },
+    setPage (state, payload) {
+      state.currentPage = payload
     }
   },
   actions: {
-    getPopularMovies ({ commit }) {
-      MoviesApi.getPopularMovies()
+    getPopularMovies ({ commit }, page) {
+      MoviesApi.getPopularMovies(page)
         .then(data => {
-          commit('setPopularMovies', data)
+          commit('setPopularMovies', {
+            data: data.results,
+            currentPage: data.page,
+            totalPages: data.total_pages,
+            totalResults: data.total_results
+          })
         })
         .catch(err => console.log(err))
     },
-    getNowPlayingMovies ({ commit }) {
-      MoviesApi.getNowPlayingMovie()
+    getNowPlayingMovies ({ commit }, page) {
+      MoviesApi.getNowPlayingMovie(page)
         .then(data => {
-          commit('setNowPlayingMovies', data)
+          commit('setNowPlayingMovies', {
+            data: data.results,
+            currentPage: data.page,
+            totalPages: data.total_pages,
+            totalResults: data.total_results
+          })
         })
         .catch(err => console.log(err))
     },
@@ -60,6 +86,10 @@ export default new Vuex.Store({
           commit('setDetailsOfMovie', data)
         })
         .catch(err => console.log(err))
+    },
+    getConfigurationsForImages ({ commit }) {
+      MoviesApi.getConfigurationsForImages()
+        .then(data => commit('setConfigurationsForImages', data))
     }
   }
 })

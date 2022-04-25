@@ -6,12 +6,12 @@
       </span>
     </div>
     <div v-if="dataAboutMovie" class="descr">
-      <img class="descr__img" :src="'https://image.tmdb.org/t/p/w500' + dataAboutMovie.backdrop_path" alt="moviePicture">
-      <div>
+      <img v-if="imgURL" class="descr__img" :src="imgURL" alt="moviePicture">
+      <div v-if="dataAboutMovie.budget">
         <span>Budget: </span>
         <span>{{ dataAboutMovie.budget }} $</span>
       </div>
-      <div>
+      <div v-if="dataAboutMovie.homepage">
         <span>Home page: </span>
         <a class="descr__link" target="_blank" :href="dataAboutMovie.homepage">{{dataAboutMovie.original_title}}</a>
       </div>
@@ -19,7 +19,7 @@
         <span>Release date: </span>
         <span>{{ dataAboutMovie.release_date }}</span>
       </div>
-      <div>
+      <div v-if="dataAboutMovie.revenue">
         <span>Revenue: </span>
         <span>{{ dataAboutMovie.revenue }} $</span>
       </div>
@@ -44,23 +44,35 @@ export default {
   name: 'DetailsAboutMovie',
   props: {
     id: {
-      type: Number,
+      type: [String, Number],
       require: true
     }
   },
   created () {
     this.$store.dispatch('getDatailsOfTopMovie', this.id)
-  },
-  computed: {
-    dataAboutMovie () {
-      return this.$store.state.detailsOfMovie
-    }
+    this.$store.dispatch('getConfigurationsForImages')
   },
   destroyed () {
     this.$store.commit('destroyMoviesData', {
       propState: 'detailsOfMovie',
       reset: {}
     })
+    this.$store.commit('destroyMoviesData', {
+      propState: 'configurationsForImages',
+      reset: {}
+    })
+  },
+  computed: {
+    dataAboutMovie () {
+      return this.$store.state.detailsOfMovie
+    },
+    imgURL () {
+      const configImage = this.$store.state.configurationsForImages
+      if (configImage.base_url && configImage.backdrop_sizes) {
+        return `${configImage.base_url}${configImage.backdrop_sizes[1]}${this.dataAboutMovie.backdrop_path}`
+      }
+      return null
+    }
   }
 }
 </script>
