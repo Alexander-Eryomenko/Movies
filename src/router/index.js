@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MainView from '@/views/MainView.vue'
-import PopularMovieView from '@/views/PopularMoviesView.vue'
+import PopularMoviesView from '@/views/PopularMoviesView.vue'
 import DetailsAboutMovieView from '@/views/DetailsAboutMovieView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 
@@ -16,7 +16,7 @@ const routes = [
   {
     path: '/popular',
     name: 'popularMovieView',
-    component: PopularMovieView
+    component: PopularMoviesView
   },
   {
     path: '/details/:id',
