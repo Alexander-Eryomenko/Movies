@@ -41,8 +41,8 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getPopularMovies ({ commit }, page) {
-      MoviesApi.getPopularMovies(page)
+    getPopularMovies ({ commit }) {
+      MoviesApi.getPopularMovies()
         .then(data => {
           commit('setPopularMovies', data)
         })
@@ -53,9 +53,8 @@ export default new Vuex.Store({
         .then(data => {
           commit('setNowPlayingMovies', data)
         })
-        .catch(err => console.log(err))
     },
-    getDatailsOfTopMovie ({ commit }, id) {
+    getDatailsOfMovie ({ commit }, id) {
       MoviesApi.getDetailsOfMovie(id)
         .then(data => {
           commit('setDetailsOfMovie', data)
