@@ -68,7 +68,7 @@ export default {
     },
     imgURL () {
       const configImage = this.$store.state.configurationsForImages
-      if (configImage.base_url && configImage.backdrop_sizes) {
+      if (configImage.base_url && configImage.backdrop_sizes && this.dataAboutMovie.backdrop_path) {
         return `${configImage.base_url}${configImage.backdrop_sizes[1]}${this.dataAboutMovie.backdrop_path}`
       }
       return null

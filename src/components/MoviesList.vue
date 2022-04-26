@@ -1,20 +1,21 @@
 <template>
-  <v-container>
-    <div v-for="movie in movies" :key="movie.id" class="card-movie">
-      <img class="card-movie__img" :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="poster">
-      <div class="card-movie__descr">
-        <div class="card-movie__descr-name">
-          <span>Name of movie: </span>
-          <span>{{ movie.original_title }}</span>
+
+    <div>
+      <div v-for="movie in movies" :key="movie.id" class="card-movie">
+        <img v-if="movie.poster_path" class="card-movie__img" :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="poster">
+        <div v-if="movie.original_title && movie.overview" class="card-movie__descr">
+          <div class="card-movie__descr-name">
+            <span>Name of movie: </span>
+            <span>{{ movie.original_title }}</span>
+          </div>
+          <div class="card-movie__descr-overview">
+            <span>Overview: </span>
+            <span>{{ movie.overview }}</span>
+          </div>
         </div>
-        <div class="card-movie__descr-overview">
-          <span>Overview: </span>
-          <span>{{ movie.overview }}</span>
-        </div>
-      </div>
         <v-btn :to="{ name: 'detailsAboutMovie', params: { id: movie.id }}" rounded color="green">More</v-btn>
+      </div>
     </div>
-  </v-container>
 
 </template>
 

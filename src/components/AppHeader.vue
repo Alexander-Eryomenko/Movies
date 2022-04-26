@@ -6,7 +6,6 @@
       </router-link>
       <div class="app-header__nav">
         <v-btn to="/popular" x-small class="app-header__nav__btn">Popular movies</v-btn>
-        <v-btn to="/some-movies" x-small class="app-header__nav__btn">Some films</v-btn>
       </div>
     </div>
   </div>

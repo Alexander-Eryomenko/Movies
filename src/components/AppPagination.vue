@@ -1,13 +1,15 @@
 <template>
-  <div class="text-center">
-    <v-pagination
-      v-model="currentPage"
-      :length="totalPages"
-      @previous="previousPage"
-      @next="nextPage"
-      circle
-    ></v-pagination>
-  </div>
+    <div class="app-pagination text-center">
+      <v-pagination
+        v-model="currentPage"
+        :length="totalPages"
+        total-visible="10"
+        @previous="previousPage"
+        @next="nextPage"
+        color="success"
+      ></v-pagination>
+    </div>
+
 </template>
 
 <script>
@@ -29,7 +31,7 @@ export default {
       }
     },
     totalPages () {
-      return this.$store.state.totalPages
+      return this.$store.state.totalPages <= 500 ? this.$store.state.totalPages : 500
     }
   },
   methods: {

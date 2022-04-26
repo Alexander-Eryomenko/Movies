@@ -27,8 +27,7 @@ const routes = [
   {
     path: '*',
     name: 'notFoundView',
-    component: NotFoundView,
-    redirect: { name: 'nowPlayingMovies' }
+    component: NotFoundView
   }
 ]
 
