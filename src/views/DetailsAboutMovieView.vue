@@ -58,6 +58,10 @@ export default {
       propState: 'detailsOfMovie',
       reset: {}
     })
+    this.$store.commit('destroyMoviesData', {
+      propState: 'configurationsForImages',
+      reset: {}
+    })
   },
   computed: {
     dataAboutMovie () {
