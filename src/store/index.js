@@ -41,8 +41,8 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getPopularMovies ({ commit }) {
-      MoviesApi.getPopularMovies()
+    getPopularMovies ({ commit }, page) {
+      MoviesApi.getPopularMovies(page)
         .then(data => {
           commit('setPopularMovies', data)
         })

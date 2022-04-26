@@ -36,3 +36,9 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+.title {
+  margin-bottom: 12px;
+}
+</style>
