@@ -49,3 +49,9 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  .app-pagination {
+    animation: hide-pagination 1s;
+  }
+</style>
