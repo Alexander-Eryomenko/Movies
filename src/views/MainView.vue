@@ -1,5 +1,5 @@
 <template>
-  <div class="main-page">
+  <div class="main-view">
     <div class="title text-center text-h4 font-weight-bold green--text text--darken-3">{{titleForMoviePage}}</div>
     <MoviesList :movies="nowPlayingMovies" />
     <AppPagination v-if="nowPlayingMovies" actionType="getNowPlayingMovies" />
