@@ -9,7 +9,6 @@ export default new Vuex.Store({
     isLoading: false,
     popularMovies: [],
     nowPlayingMovies: [],
-    latestMovie: {},
     detailsOfMovie: {},
     configurationsForImages: {},
     currentPage: null,
@@ -23,20 +22,17 @@ export default new Vuex.Store({
     destroyMoviesData (state, { propState, reset }) {
       state[propState] = reset
     },
-    setPopularMovies (state, { data, currentPage, totalPages, totalResults }) {
-      state.popularMovies = data
-      state.currentPage = currentPage
-      state.totalPages = totalPages
-      state.totalResults = totalResults
+    setPopularMovies (state, data) {
+      state.popularMovies = data.results
+      state.currentPage = data.page
+      state.totalPages = data.total_pages
+      state.totalResults = data.total_results
     },
-    setNowPlayingMovies (state, { data, currentPage, totalPages, totalResults }) {
-      state.nowPlayingMovies = data
-      state.currentPage = currentPage
-      state.totalPages = totalPages
-      state.totalResults = totalResults
-    },
-    setLatestMovies (state, payload) {
-      state.latestMovie = payload
+    setNowPlayingMovies (state, data) {
+      state.nowPlayingMovies = data.results
+      state.currentPage = data.page
+      state.totalPages = data.total_pages
+      state.totalResults = data.total_results
     },
     setDetailsOfMovie (state, payload) {
       state.detailsOfMovie = payload
@@ -52,31 +48,14 @@ export default new Vuex.Store({
     getPopularMovies ({ commit }, page) {
       MoviesApi.getPopularMovies(page)
         .then(data => {
-          commit('setPopularMovies', {
-            data: data.results,
-            currentPage: data.page,
-            totalPages: data.total_pages,
-            totalResults: data.total_results
-          })
+          commit('setPopularMovies', data)
         })
         .catch(err => console.log(err))
     },
     getNowPlayingMovies ({ commit }, page) {
       MoviesApi.getNowPlayingMovie(page)
         .then(data => {
-          commit('setNowPlayingMovies', {
-            data: data.results,
-            currentPage: data.page,
-            totalPages: data.total_pages,
-            totalResults: data.total_results
-          })
-        })
-        .catch(err => console.log(err))
-    },
-    getLatestMovie ({ commit }) {
-      MoviesApi.getLatestMovie()
-        .then(data => {
-          commit('setLatestMovies', data)
+          commit('setNowPlayingMovies', data)
         })
         .catch(err => console.log(err))
     },

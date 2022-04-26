@@ -2,7 +2,7 @@
   <div class="main-page">
     <div class="title text-center text-h4 font-weight-bold green--text text--darken-3">{{titleForMoviePage}}</div>
     <MoviesList :movies="nowPlayingMovies" />
-    <AppPagination v-if="$store.state.nowPlayingMovies" actionType="getNowPlayingMovies" />
+    <AppPagination v-if="nowPlayingMovies" actionType="getNowPlayingMovies" />
   </div>
 </template>
 
@@ -19,6 +19,7 @@ export default {
   },
   created () {
     this.$store.dispatch('getNowPlayingMovies')
+    this.$store.dispatch('getConfigurationsForImages')
   },
   destroyed () {
     this.$store.commit('destroyMoviesData', {

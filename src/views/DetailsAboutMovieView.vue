@@ -50,15 +50,10 @@ export default {
   },
   created () {
     this.$store.dispatch('getDatailsOfTopMovie', this.id)
-    this.$store.dispatch('getConfigurationsForImages')
   },
   destroyed () {
     this.$store.commit('destroyMoviesData', {
       propState: 'detailsOfMovie',
-      reset: {}
-    })
-    this.$store.commit('destroyMoviesData', {
-      propState: 'configurationsForImages',
       reset: {}
     })
   },

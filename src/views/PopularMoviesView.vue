@@ -2,7 +2,7 @@
   <div class="popular-movies">
     <div class="title text-center text-h4 font-weight-bold green--text text--darken-3">{{titleForMoviePage}}</div>
     <MoviesList :movies="popularMovies" />
-    <AppPagination v-if="$store.state.popularMovies" actionType="getPopularMovies"/>
+    <AppPagination v-if="popularMovies" actionType="getPopularMovies"/>
   </div>
 </template>
 
@@ -36,3 +36,9 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+.title {
+  margin-bottom: 12px;
+}
+</style>

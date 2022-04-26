@@ -9,7 +9,6 @@
         color="success"
       ></v-pagination>
     </div>
-
 </template>
 
 <script>
