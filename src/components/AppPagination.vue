@@ -1,5 +1,5 @@
 <template>
-    <div class="app-pagination text-center">
+    <div class="app-pagination">
       <v-pagination
         v-model="currentPage"
         :length="totalPages"
@@ -49,3 +49,9 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  .app-pagination {
+    animation: hide-pagination 1s;
+  }
+</style>

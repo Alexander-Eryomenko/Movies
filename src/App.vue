@@ -18,3 +18,31 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.title {
+  margin-bottom: 12px;
+  animation: fade 0.5s linear;
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes hide-pagination {
+  0% {
+    opacity: 0;
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+</style>

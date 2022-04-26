@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="movies-list">
       <div v-for="movie in movies" :key="movie.id" class="card-movie">
           <img v-if="movie.poster_path" class="card-movie__img" :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="poster">
           <div v-if="movie.original_title && movie.overview" class="card-movie__descr">
@@ -42,6 +42,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     overflow: auto;
+    animation: fade 0.5s linear;
       &__img {
         border-radius: 10px;
         height: 90%;
