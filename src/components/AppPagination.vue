@@ -54,4 +54,17 @@ export default {
   .app-pagination {
     animation: hide-pagination 1s;
   }
+  @keyframes hide-pagination {
+    0% {
+      visibility: hidden;
+    }
+
+    90% {
+      visibility: hidden;
+    }
+
+    100% {
+      visibility: visible;
+    }
+  }
 </style>
