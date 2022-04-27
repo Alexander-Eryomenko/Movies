@@ -6,7 +6,7 @@
       </span>
     </div>
     <div v-if="dataAboutMovie" class="descr">
-      <img v-if="imgURL" class="descr__img" :src="imgURL" alt="moviePicture">
+      <img v-if="dataAboutMovie.backdrop_path" class="descr__img" :src="'https://image.tmdb.org/t/p/w500' + dataAboutMovie.backdrop_path" alt="moviePicture">
       <div v-if="dataAboutMovie.budget">
         <span>Budget: </span>
         <span>{{ dataAboutMovie.budget }} $</span>
@@ -60,13 +60,6 @@ export default {
   computed: {
     dataAboutMovie () {
       return this.$store.state.detailsOfMovie
-    },
-    imgURL () {
-      const configImage = this.$store.state.configurationsForImages
-      if (configImage.base_url && configImage.backdrop_sizes && this.dataAboutMovie.backdrop_path) {
-        return `${configImage.base_url}${configImage.backdrop_sizes[1]}${this.dataAboutMovie.backdrop_path}`
-      }
-      return null
     }
   }
 }
@@ -83,6 +76,7 @@ export default {
     align-items: center;
     flex-direction: column;
     margin-bottom: 20px;
+    animation: fade 0.5s linear;
       &__img {
         display: block;
         width: 50%;

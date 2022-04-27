@@ -10,7 +10,6 @@ export default new Vuex.Store({
     popularMovies: [],
     nowPlayingMovies: [],
     detailsOfMovie: {},
-    configurationsForImages: {},
     currentPage: null,
     totalPages: null,
     totalResults: null
@@ -37,9 +36,6 @@ export default new Vuex.Store({
     setDetailsOfMovie (state, payload) {
       state.detailsOfMovie = payload
     },
-    setConfigurationsForImages (state, payload) {
-      state.configurationsForImages = payload
-    },
     setPage (state, payload) {
       state.currentPage = payload
     }
@@ -65,10 +61,6 @@ export default new Vuex.Store({
           commit('setDetailsOfMovie', data)
         })
         .catch(err => console.log(err))
-    },
-    getConfigurationsForImages ({ commit }) {
-      MoviesApi.getConfigurationsForImages()
-        .then(data => commit('setConfigurationsForImages', data))
     }
   }
 })

@@ -3,7 +3,7 @@
       <v-pagination
         v-model="currentPage"
         :length="totalPages"
-        total-visible="10"
+        total-visible="7"
         @previous="previousPage"
         @next="nextPage"
         color="success"
@@ -30,7 +30,7 @@ export default {
       }
     },
     totalPages () {
-      return this.$store.state.totalPages <= 500 ? this.$store.state.totalPages : 500
+      return this.$store.state.totalPages
     }
   },
   methods: {
@@ -53,5 +53,18 @@ export default {
 <style scoped lang="scss">
   .app-pagination {
     animation: hide-pagination 1s;
+  }
+  @keyframes hide-pagination {
+    0% {
+      visibility: hidden;
+    }
+
+    90% {
+      visibility: hidden;
+    }
+
+    100% {
+      visibility: visible;
+    }
   }
 </style>
