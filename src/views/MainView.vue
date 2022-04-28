@@ -1,18 +1,21 @@
 <template>
-  <div>
+  <div class="main-view">
     <div class="title text-center text-h4 font-weight-bold green--text text--darken-3">{{titleForMoviePage}}</div>
-    <MoviesList :movies="popularMovies" />
+    <MoviesList :movies="nowPlayingMovies" />
+    <AppPagination v-if="nowPlayingMovies" actionType="getNowPlayingMovies" />
   </div>
 </template>
 
 <script>
 import MoviesList from '@/components/MoviesList.vue'
+import AppPagination from '@/components/AppPagination.vue'
 import { TITLE } from '@/constants/titleConstants'
 
 export default {
-  name: 'NowPlayingView',
+  name: 'MainView',
   components: {
-    MoviesList
+    MoviesList,
+    AppPagination
   },
   created () {
     this.$store.dispatch('getNowPlayingMovies')
@@ -20,11 +23,11 @@ export default {
   destroyed () {
     this.$store.commit('destroyMoviesData', {
       propState: 'nowPlayingMovies',
-      reset: []
+      reset: null
     })
   },
   computed: {
-    popularMovies () {
+    nowPlayingMovies () {
       return this.$store.state.nowPlayingMovies
     },
     titleForMoviePage () {

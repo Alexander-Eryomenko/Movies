@@ -1,21 +1,20 @@
 <template>
-  <v-container>
-    <div v-for="movie in movies" :key="movie.id" class="card-movie">
-      <img class="card-movie__img" :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="poster">
-      <div class="card-movie__descr">
-        <div class="card-movie__descr-name">
-          <span>Name of movie: </span>
-          <span>{{ movie.original_title }}</span>
-        </div>
-        <div class="card-movie__descr-overview">
-          <span>Overview: </span>
-          <span>{{ movie.overview }}</span>
-        </div>
+    <div class="movies-list">
+      <div v-for="movie in movies" :key="movie.id" class="card-movie">
+          <img v-if="movie.poster_path" class="card-movie__img" :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="poster">
+          <div v-if="movie.original_title && movie.overview" class="card-movie__descr">
+            <div class="card-movie__descr-name">
+              <span>Name of movie: </span>
+              <span>{{ movie.original_title }}</span>
+            </div>
+            <div class="card-movie__descr-overview">
+              <span>Overview: </span>
+              <span>{{ movie.overview }}</span>
+            </div>
+          </div>
+          <v-btn :to="{ name: 'detailsAboutMovie', params: { id: movie.id }}" rounded color="green">More</v-btn>
       </div>
-        <v-btn :to="{ name: 'detailsAboutMovie', params: { id: movie.id }}" rounded color="green">More</v-btn>
     </div>
-  </v-container>
-
 </template>
 
 <script>
@@ -42,6 +41,8 @@ export default {
     margin-bottom: 10px;
     justify-content: space-between;
     align-items: center;
+    overflow: auto;
+    animation: fade 0.5s linear;
       &__img {
         border-radius: 10px;
         height: 90%;
@@ -60,5 +61,18 @@ export default {
             color: LightSlateGrey;
           }
       }
+  }
+  @media (min-width: 300px) and (max-width: 960px) {
+    .card-movie {
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      &__img {
+        height: 150px;
+      }
+      &__descr {
+        font-size: 12px;
+      }
+    }
   }
 </style>

@@ -9,8 +9,10 @@ export default new Vuex.Store({
     isLoading: false,
     popularMovies: [],
     nowPlayingMovies: [],
-    latestMovie: {},
-    detailsOfMovie: {}
+    detailsOfMovie: {},
+    currentPage: null,
+    totalPages: null,
+    totalResults: null
   },
   mutations: {
     setLoadingStatus (state) {
@@ -19,38 +21,37 @@ export default new Vuex.Store({
     destroyMoviesData (state, { propState, reset }) {
       state[propState] = reset
     },
-    setPopularMovies (state, payload) {
-      state.popularMovies = payload
+    setPopularMovies (state, data) {
+      state.popularMovies = data.results
+      state.currentPage = data.page
+      state.totalPages = data.total_pages
+      state.totalResults = data.total_results
     },
-    setNowPlayingMovies (state, payload) {
-      state.nowPlayingMovies = payload
-    },
-    setLatestMovies (state, payload) {
-      state.latestMovie = payload
+    setNowPlayingMovies (state, data) {
+      state.nowPlayingMovies = data.results
+      state.currentPage = data.page
+      state.totalPages = data.total_pages
+      state.totalResults = data.total_results
     },
     setDetailsOfMovie (state, payload) {
       state.detailsOfMovie = payload
+    },
+    setPage (state, payload) {
+      state.currentPage = payload
     }
   },
   actions: {
-    getPopularMovies ({ commit }) {
-      MoviesApi.getPopularMovies()
+    getPopularMovies ({ commit }, page) {
+      MoviesApi.getPopularMovies(page)
         .then(data => {
           commit('setPopularMovies', data)
         })
         .catch(err => console.log(err))
     },
-    getNowPlayingMovies ({ commit }) {
-      MoviesApi.getNowPlayingMovie()
+    getNowPlayingMovies ({ commit }, page) {
+      MoviesApi.getNowPlayingMovie(page)
         .then(data => {
           commit('setNowPlayingMovies', data)
-        })
-        .catch(err => console.log(err))
-    },
-    getLatestMovie ({ commit }) {
-      MoviesApi.getLatestMovie()
-        .then(data => {
-          commit('setLatestMovies', data)
         })
         .catch(err => console.log(err))
     },

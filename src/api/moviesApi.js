@@ -1,22 +1,17 @@
 import axios from 'axios'
 
 export class MoviesApi {
-  static apiKey = process.env.VUE_APP_API_KEY;
+  static apiKey = process.env.VUE_APP_API_KEY
   static mainURL = 'https://api.themoviedb.org/3/movie'
   static nowPlayingMoviesURL = `${MoviesApi.mainURL}/now_playing?api_key=${MoviesApi.apiKey}`
-  static latestMovieURL = `${MoviesApi.mainURL}/latest?api_key=${MoviesApi.apiKey}`
   static popularMovieURL = `${MoviesApi.mainURL}/popular?api_key=${MoviesApi.apiKey}`
 
-  static getNowPlayingMovie () {
-    return axios.get(MoviesApi.nowPlayingMoviesURL).then(response => response.data.results)
+  static getNowPlayingMovie (page = 1) {
+    return axios.get(`${MoviesApi.nowPlayingMoviesURL}&page=${page}`).then(response => response.data)
   }
 
-  static getLatestMovie () {
-    return axios.get(MoviesApi.latestMovieURL).then(response => response.data)
-  }
-
-  static getPopularMovies () {
-    return axios.get(MoviesApi.popularMovieURL).then(response => response.data.results)
+  static getPopularMovies (page = 1) {
+    return axios.get(`${MoviesApi.popularMovieURL}&page=${page}`).then(response => response.data)
   }
 
   static getDetailsOfMovie (id) {
