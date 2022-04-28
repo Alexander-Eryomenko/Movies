@@ -19,7 +19,6 @@ export default {
   },
   created () {
     this.$store.dispatch('getNowPlayingMovies')
-    this.$store.dispatch('getConfigurationsForImages')
   },
   destroyed () {
     this.$store.commit('destroyMoviesData', {
