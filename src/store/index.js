@@ -55,7 +55,7 @@ export default new Vuex.Store({
         })
         .catch(err => console.log(err))
     },
-    getDatailsOfMovie ({ commit }, id) {
+    getDetailsOfMovie ({ commit }, id) {
       MoviesApi.getDetailsOfMovie(id)
         .then(data => {
           commit('setDetailsOfMovie', data)
