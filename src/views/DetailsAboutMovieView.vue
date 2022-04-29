@@ -49,7 +49,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('getDatailsOfTopMovie', this.id)
+    this.$store.dispatch('getDetailsOfMovie', this.id)
   },
   destroyed () {
     this.$store.commit('destroyMoviesData', {
